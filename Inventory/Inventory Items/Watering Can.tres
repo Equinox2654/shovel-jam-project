@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://c8lorv1p2c0yo"]
+
+[ext_resource type="Script" uid="uid://c0asixjkpqsfi" path="res://Inventory/inventory_item.gd" id="1_po50o"]
+[ext_resource type="Texture2D" uid="uid://bqujbc814clql" path="res://Textures/Watering Can.png" id="2_hstcg"]
+
+[resource]
+script = ExtResource("1_po50o")
+name = " Watering Can"
+texture = ExtResource("2_hstcg")
+type = " Default"
+metadata/_custom_type_script = "uid://c0asixjkpqsfi"

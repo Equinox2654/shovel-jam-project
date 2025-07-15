@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqi3ahejssh0x"]
+
+[ext_resource type="Script" uid="uid://pl73ku1ayn0k" path="res://Inventory/Toolbar/Tool_UI.gd" id="1_t8wce"]
+[ext_resource type="Texture2D" uid="uid://ch3nxdbs1kb7r" path="res://Textures/Inv_UI.png" id="2_fmupx"]
+[ext_resource type="PackedScene" uid="uid://biwk25yenncom" path="res://inv_ui_slot.tscn" id="3_q7aht"]
+
+[node name="ToolBar_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_t8wce")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 119.0
+texture = ExtResource("2_fmupx")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -52.0
+offset_right = 16.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inv_UI_Slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_q7aht")]
+layout_mode = 2
+
+[node name="Inv_UI_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_q7aht")]
+layout_mode = 2
+
+[node name="Inv_UI_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_q7aht")]
+layout_mode = 2

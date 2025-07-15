@@ -14,29 +14,31 @@ func create(movespeed: int, direction_facing: String) -> void:
 func face_direction() -> void:
 	var x_axis_direction = velocity.x
 	var y_axis_direction = velocity.y
-	if y_axis_direction == -1:
+	if y_axis_direction <= -1:
 		self.direction_facing = "up"
-	elif y_axis_direction == 1:
+	elif y_axis_direction >= 1:
 		self.direction_facing = "down"
-	if x_axis_direction == -1:
+	if x_axis_direction <= -1:
 		self.direction_facing = "left"
-	elif x_axis_direction == 1:
+	elif x_axis_direction >= 1:
 		self.direction_facing = "right"
 
 func anim_direction(sprite: AnimatedSprite2D) -> void:
-	if self.direction_facing == "up":
-		sprite.play("Idle_Up")
-		sprite.set_flip_h(0)
-	if self.direction_facing == "down":
-		sprite.play("Idle_Down")
-		sprite.set_flip_h(0)
-	if self.direction_facing == "left":
-		sprite.play("Idle_side")
-		sprite.set_flip_h(1)
-	if self.direction_facing == "right":
-		sprite.play("Idle_side")
-		sprite.set_flip_h(0)
-		
+	if velocity.y == 0:
+		if self.direction_facing == "up":
+			sprite.play("Idle_up")
+			sprite.set_flip_h(0)
+		if self.direction_facing == "down":
+			sprite.play("Idle_down")
+			sprite.set_flip_h(0)
+	if velocity.x == 0:
+		if self.direction_facing == "left":
+			sprite.play("Idle_side")
+			sprite.set_flip_h(1)
+		if self.direction_facing == "right":
+			sprite.play("Idle_side")
+			sprite.set_flip_h(0)
+
 func move(delta: float) -> void:
 	#Child finishes function
 	pass
@@ -72,9 +74,10 @@ func anim_move(sprite: AnimatedSprite2D) -> void:
 				sprite.set_flip_h(0)
 
 func update(sprite: AnimatedSprite2D) -> void:
-	anim_move(sprite)
+	face_direction()
 	anim_direction(sprite)
-	
+	anim_move(sprite)
+
+
 func physics_update(delta: float) -> void:
 	move(delta)
-	face_direction()

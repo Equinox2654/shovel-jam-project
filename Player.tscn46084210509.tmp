@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyy7t0qsllwmr"]
+
+[ext_resource type="Script" uid="uid://bt6f3rr4bexts" path="res://Player.gd" id="1_xhfnw"]
+[ext_resource type="Resource" uid="uid://dimi81d6j6ngp" path="res://Inventory/PlayerInv.tres" id="2_kpjcp"]
+[ext_resource type="PackedScene" uid="uid://d1h0qv7dqtnpj" path="res://Inv_UI.tscn" id="3_kne1u"]
+[ext_resource type="PackedScene" uid="uid://cqi3ahejssh0x" path="res://Inventory/Toolbar/toolbar.tscn" id="4_e80uo"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xhfnw")
+inv = ExtResource("2_kpjcp")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="Inv_UI" parent="." instance=ExtResource("3_kne1u")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -58.0
+offset_right = 78.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolBar_UI" parent="." instance=ExtResource("4_e80uo")]
+offset_left = 113.0
+offset_top = -56.0
+offset_right = 113.0
+offset_bottom = -56.0
+
+[node name="Camera2D" type="Camera2D" parent="."]

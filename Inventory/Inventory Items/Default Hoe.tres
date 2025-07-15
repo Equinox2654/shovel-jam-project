@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cl0tfd0fwhptn"]
+
+[ext_resource type="Script" uid="uid://c0asixjkpqsfi" path="res://Inventory/inventory_item.gd" id="1_rnprd"]
+[ext_resource type="Texture2D" uid="uid://dcmgof2gp1bm6" path="res://Textures/Stone Hoe.png" id="2_4cspv"]
+
+[resource]
+script = ExtResource("1_rnprd")
+name = " Hoe"
+texture = ExtResource("2_4cspv")
+type = " Default"
+metadata/_custom_type_script = "uid://c0asixjkpqsfi"
