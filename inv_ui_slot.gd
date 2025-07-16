@@ -22,9 +22,6 @@ func _ready() -> void:
 
 func invis() -> void:
 	highlight.visible = false
-	player.current_item = ["Empty", "Empty"]
 
 func visible() -> void:
 	highlight.visible = true
-	player.current_item[0] = current_item.get_item_name()
-	player.current_item[1] = current_item.get_item_type()

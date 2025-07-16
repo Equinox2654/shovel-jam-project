@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cyy7t0qsllwmr"]
+[gd_scene load_steps=32 format=3 uid="uid://cyy7t0qsllwmr"]
 
 [ext_resource type="Script" uid="uid://bt6f3rr4bexts" path="res://Player.gd" id="1_xhfnw"]
 [ext_resource type="Resource" uid="uid://dimi81d6j6ngp" path="res://Inventory/PlayerInv.tres" id="2_kpjcp"]
+[ext_resource type="Resource" uid="uid://d2bu8xe6l1n1a" path="res://Inventory/Toolbar/PlayerToolBar.tres" id="3_3tkgg"]
 [ext_resource type="Texture2D" uid="uid://ci8mlbaygthn0" path="res://Textures/Player/Back Idle.png" id="3_5ncpa"]
 [ext_resource type="Texture2D" uid="uid://gpb72ahei06b" path="res://Textures/Player/Front Profile.png" id="3_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://d1h0qv7dqtnpj" path="res://Inv_UI.tscn" id="3_kne1u"]
@@ -150,7 +151,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Sprint_side",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,7 +168,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Sprint_up",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -221,13 +222,19 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp6x6"]
+size = Vector2(16, 26)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_xhfnw")
 inv = ExtResource("2_kpjcp")
+toolbar = ExtResource("3_3tkgg")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hp6x6")
-animation = &"Idle_up"
+animation = &"Sprint_up"
 
 [node name="Inv_UI" parent="." instance=ExtResource("3_kne1u")]
 visible = false
@@ -250,3 +257,15 @@ offset_right = 113.0
 offset_bottom = -56.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hp6x6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hp6x6")

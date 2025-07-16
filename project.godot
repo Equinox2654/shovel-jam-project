@@ -99,6 +99,10 @@ Use={
 2d_render/layer_4="Interactable"
 2d_render/layer_5="Object"
 2d_render/layer_6="Door"
+2d_physics/layer_1="Soil"
+2d_physics/layer_2="Blocks"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="Tree"
 
 [rendering]
 
