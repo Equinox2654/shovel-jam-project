@@ -1,11 +1,28 @@
-[gd_resource type="Resource" script_class="ToolBar" load_steps=5 format=3 uid="uid://d2bu8xe6l1n1a"]
+[gd_resource type="Resource" script_class="ToolBar" load_steps=8 format=3 uid="uid://d2bu8xe6l1n1a"]
 
 [ext_resource type="Script" uid="uid://blnaacrdlhf8l" path="res://Inventory/Toolbar/ToolBar.gd" id="1_6ue5m"]
-[ext_resource type="Script" uid="uid://c0asixjkpqsfi" path="res://Inventory/inventory_item.gd" id="1_e7cc6"]
+[ext_resource type="Script" uid="uid://dnw61jgtd5j6f" path="res://Inventory/InvSlot.gd" id="1_kga7x"]
 [ext_resource type="Resource" uid="uid://cl0tfd0fwhptn" path="res://Inventory/Inventory Items/Default Hoe.tres" id="2_fxn2v"]
 [ext_resource type="Resource" uid="uid://c8lorv1p2c0yo" path="res://Inventory/Inventory Items/Watering Can.tres" id="3_kga7x"]
 
+[sub_resource type="Resource" id="Resource_kga7x"]
+script = ExtResource("1_kga7x")
+item = ExtResource("2_fxn2v")
+amount = 1
+metadata/_custom_type_script = "uid://dnw61jgtd5j6f"
+
+[sub_resource type="Resource" id="Resource_slbd3"]
+script = ExtResource("1_kga7x")
+item = ExtResource("3_kga7x")
+amount = 1
+metadata/_custom_type_script = "uid://dnw61jgtd5j6f"
+
+[sub_resource type="Resource" id="Resource_dx0ux"]
+script = ExtResource("1_kga7x")
+amount = 0
+metadata/_custom_type_script = "uid://dnw61jgtd5j6f"
+
 [resource]
 script = ExtResource("1_6ue5m")
-items = Array[ExtResource("1_e7cc6")]([ExtResource("2_fxn2v"), ExtResource("3_kga7x"), null])
+slots = Array[ExtResource("1_kga7x")]([SubResource("Resource_kga7x"), SubResource("Resource_slbd3"), SubResource("Resource_dx0ux")])
 metadata/_custom_type_script = "uid://blnaacrdlhf8l"

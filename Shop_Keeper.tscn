@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dynofi8d8jqkr"]
+[gd_scene load_steps=5 format=3 uid="uid://dynofi8d8jqkr"]
 
 [ext_resource type="Texture2D" uid="uid://bmckkqj8yq84p" path="res://Textures/Idle.png" id="1_exdc3"]
 
@@ -46,9 +46,19 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_q05lg")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_exdc3"]
+radius = 113.635
+
 [node name="ShopKeeper" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bdder")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65538, 0, 0, -2, 0, 1, 65534, 0, 2, 131070, 0, 3, -65537, 65536, 0, -1, 65536, 1, 65535, 65536, 2, 131071, 65536, 3, -131072, 131072, 0, -65536, 131072, 1, 0, 131072, 2, 65536, 131072, 3, -131071, 196608, 0, -65535, 196608, 1, 1, 196608, 2, 65537, 196608, 3)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_exdc3")

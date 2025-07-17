@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://btvujvwv0kr7p"]
+
+[ext_resource type="Texture2D" uid="uid://ch3nxdbs1kb7r" path="res://Textures/Inv_UI.png" id="1_inqpc"]
+[ext_resource type="Script" uid="uid://dedajnep3fc23" path="res://shop_keeper_store.gd" id="1_lvusb"]
+[ext_resource type="Resource" uid="uid://ejx61nxfkph7" path="res://Inventory/Inventory Items/CarrotSeeds.tres" id="2_48e5w"]
+[ext_resource type="PackedScene" uid="uid://biwk25yenncom" path="res://inv_ui_slot.tscn" id="2_m66c4"]
+[ext_resource type="PackedScene" uid="uid://d4jf671enivrp" path="res://prices.tscn" id="3_pyh2f"]
+[ext_resource type="Texture2D" uid="uid://cgcalmd7cciqt" path="res://Textures/Carrot.png" id="5_p32bw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48e5w"]
+size = Vector2(242, 119)
+
+[node name="ShopKeeperStore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -185.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lvusb")
+item1 = ExtResource("2_48e5w")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 197.0
+offset_bottom = 66.0
+texture = ExtResource("1_inqpc")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -26.0
+offset_right = -5.0
+offset_bottom = 26.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 3
+
+[node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_m66c4")]
+layout_mode = 2
+
+[node name="Inv_UI_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_m66c4")]
+layout_mode = 2
+
+[node name="Inv_UI_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_m66c4")]
+layout_mode = 2
+
+[node name="Prices" parent="NinePatchRect/GridContainer" instance=ExtResource("3_pyh2f")]
+layout_mode = 2
+
+[node name="Prices2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_pyh2f")]
+layout_mode = 2
+
+[node name="Prices3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_pyh2f")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(41, 22)
+texture = ExtResource("5_p32bw")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -9.0
+offset_top = 16.0
+offset_right = 31.0
+offset_bottom = 39.0
+text = "10"
+
+[node name="Button" type="Button" parent="Sprite2D/Label"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -6.0
+offset_top = -30.0
+offset_right = 24.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(111, 49.5)
+shape = SubResource("RectangleShape2D_48e5w")
+
+[connection signal="pressed" from="Sprite2D/Label/Button" to="." method="_on_button_pressed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4jf671enivrp"]
+
+[ext_resource type="Texture2D" uid="uid://dc4gt05ynawxw" path="res://Textures/Shop Keeper Prices.png" id="1_hhkuo"]
+[ext_resource type="Texture2D" uid="uid://vyhp8324bc0g" path="res://Textures/Coin.png" id="2_rglfc"]
+
+[node name="Prices" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(53, 16)
+offset_right = 53.0
+offset_bottom = 16.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(53, 16)
+layout_mode = 0
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 43.0
+offset_bottom = 15.0
+texture = ExtResource("1_hhkuo")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(45, 9)
+texture = ExtResource("2_rglfc")

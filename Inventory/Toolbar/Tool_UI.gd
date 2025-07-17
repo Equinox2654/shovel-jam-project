@@ -3,9 +3,12 @@ extends Control
 @onready var tool: ToolBar = preload("res://Inventory/Toolbar/PlayerToolBar.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
+func _ready() -> void:
+	z_index = 10
+
 func update_slots():
-	for i in range(min(tool.items.size(), slots.size())):
-		slots[i].update(tool.items[i])
+	for i in range(min(tool.slots.size(), slots.size())):
+		slots[i].update(tool.slots[i])
 		if Input.is_action_just_pressed("1") and i == 0:
 			if !slots[i].is_visible:
 				slots[1].invis()
