@@ -6,7 +6,7 @@ extends character
 @onready var Player_toolbar = preload("res://Inventory/Toolbar/PlayerToolBar.tres")
 @onready var store_ui = $ShopKeeperStore
 var is_interactable: bool = false
-var money: int = 9999
+var money: int = 10
 
 var player_inv = []
 var player_toolbar = [

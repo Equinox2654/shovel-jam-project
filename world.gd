@@ -73,7 +73,8 @@ func harvest_plant(tile_pos: Vector2i, source_id, tile_id) -> void:
 		tile_map.set_cell(seed_layer, tile_map_position, source_id, Vector2i(4, 12))
 	elif tile_id == Vector2i(5, 14):
 		player.collect(lemon_item)
-		handle_seed(tile_pos, 1, Vector2i(4, 14), 2, 30.0)
+		tile_map.set_cell(seed_layer, tile_map_position, 0, Vector2i(tile_id.x - 1, tile_id.y))
+		handle_seed(tile_pos, 1, Vector2i(4, 14), 2, 30.0, true)
 	elif tile_id == Vector2i(6, 15):
 		player.collect(hot_dog_item)
 		tile_map.set_cell(seed_layer, tile_map_position, source_id, Vector2i(4, 12))
