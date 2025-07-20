@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://f1xds8e5xbb5"]
+
+[ext_resource type="Script" uid="uid://c0asixjkpqsfi" path="res://Inventory/inventory_item.gd" id="1_c8xq5"]
+[ext_resource type="Texture2D" uid="uid://cpp5jmmlp32l" path="res://Textures/Game Developments/Hot Dog.png" id="2_ulpfo"]
+
+[resource]
+script = ExtResource("1_c8xq5")
+name = "Hot Dog"
+texture = ExtResource("2_ulpfo")
+type = "Sellable"
+metadata/_custom_type_script = "uid://c0asixjkpqsfi"

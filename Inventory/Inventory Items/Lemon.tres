@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://d3sippycusufw"]
+
+[ext_resource type="Script" uid="uid://c0asixjkpqsfi" path="res://Inventory/inventory_item.gd" id="1_oqqhe"]
+[ext_resource type="Texture2D" uid="uid://bendhg8w6wayd" path="res://Textures/Game Developments/Lemon.png" id="2_sogtf"]
+
+[resource]
+script = ExtResource("1_oqqhe")
+name = "Lemon"
+texture = ExtResource("2_sogtf")
+type = "Sellable"
+metadata/_custom_type_script = "uid://c0asixjkpqsfi"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cyy7t0qsllwmr"]
+[gd_scene load_steps=35 format=3 uid="uid://cyy7t0qsllwmr"]
 
 [ext_resource type="Script" uid="uid://bt6f3rr4bexts" path="res://Player.gd" id="1_xhfnw"]
 [ext_resource type="Resource" uid="uid://dimi81d6j6ngp" path="res://Inventory/PlayerInv.tres" id="2_kpjcp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bj50wjeuxayhk" path="res://Textures/Player/Back Profile.png" id="6_hp6x6"]
 [ext_resource type="PackedScene" uid="uid://btvujvwv0kr7p" path="res://shop_keeper_store.tscn" id="12_l6ohk"]
 [ext_resource type="PackedScene" uid="uid://d4jf671enivrp" path="res://prices.tscn" id="13_oudfo"]
+[ext_resource type="AudioStream" uid="uid://cyu765ubc8fpc" path="res://SFX/New item.mp3" id="14_d6rpx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp6x6"]
 atlas = ExtResource("3_wi0c6")
@@ -281,6 +282,7 @@ offset_right = -92.5
 offset_bottom = -68.0
 
 [node name="Prices" parent="." instance=ExtResource("13_oudfo")]
+z_index = 10
 offset_left = -148.0
 offset_top = -87.0
 offset_right = -95.0
@@ -294,6 +296,9 @@ offset_right = 30.0
 offset_bottom = 18.0
 text = "10"
 horizontal_alignment = 2
+
+[node name="Collect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_d6rpx")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

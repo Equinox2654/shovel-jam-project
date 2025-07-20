@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://b2vkm6wrhx5j8"]
+
+[ext_resource type="Script" uid="uid://c0asixjkpqsfi" path="res://Inventory/inventory_item.gd" id="1_ae4lc"]
+[ext_resource type="Texture2D" uid="uid://sm2h1mg0w8xa" path="res://Textures/Lemon Seed Packets.png" id="2_o6lil"]
+
+[resource]
+script = ExtResource("1_ae4lc")
+name = "Lemon"
+texture = ExtResource("2_o6lil")
+type = "Seed"
+metadata/_custom_type_script = "uid://c0asixjkpqsfi"

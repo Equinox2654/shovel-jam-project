@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1p07s7hjki43"]
+[gd_scene load_steps=17 format=3 uid="uid://b1p07s7hjki43"]
 
 [ext_resource type="Script" uid="uid://cdxs8y86sf8ho" path="res://world.gd" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://dynofi8d8jqkr" path="res://Shop_Keeper.tscn" id="2_036b0"]
 [ext_resource type="Resource" uid="uid://c7jnivdgimviw" path="res://Inventory/Inventory Items/Carrot.tres" id="2_dwbse"]
 [ext_resource type="PackedScene" uid="uid://cyy7t0qsllwmr" path="res://Player.tscn" id="2_fj7yv"]
+[ext_resource type="Resource" uid="uid://d3sippycusufw" path="res://Inventory/Inventory Items/Lemon.tres" id="3_ioo17"]
 [ext_resource type="Texture2D" uid="uid://dgd7no6f7e4j0" path="res://Textures/Game Developments/TileMap.png" id="4_dwbse"]
+[ext_resource type="Resource" uid="uid://f1xds8e5xbb5" path="res://Inventory/Inventory Items/Hot Dog.tres" id="4_wse8f"]
 [ext_resource type="PackedScene" uid="uid://6p8tkyp2hdf" path="res://House.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://ch0y31xrs6im8" path="res://Sell Well.tscn" id="7_pkg7o"]
+[ext_resource type="AudioStream" uid="uid://d4nq6782jkyst" path="res://SFX/Background music.mp3" id="10_wse8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
 texture = ExtResource("4_dwbse")
@@ -72,9 +75,13 @@ texture = ExtResource("4_dwbse")
 14:4/0 = 0
 15:4/0 = 0
 0:5/0 = 0
+0:5/0/z_index = 9
 1:5/0 = 0
+1:5/0/z_index = 9
 2:5/0 = 0
+2:5/0/z_index = 9
 3:5/0 = 0
+3:5/0/z_index = 9
 4:5/0 = 0
 5:5/0 = 0
 6:5/0 = 0
@@ -88,9 +95,13 @@ texture = ExtResource("4_dwbse")
 14:5/0 = 0
 15:5/0 = 0
 0:6/0 = 0
+0:6/0/z_index = 9
 1:6/0 = 0
+1:6/0/z_index = 9
 2:6/0 = 0
+2:6/0/z_index = 9
 3:6/0 = 0
+3:6/0/z_index = 9
 4:6/0 = 0
 5:6/0 = 0
 6:6/0 = 0
@@ -104,9 +115,13 @@ texture = ExtResource("4_dwbse")
 14:6/0 = 0
 15:6/0 = 0
 0:7/0 = 0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.75371, -8, 8, -8, 7.24953, 7.16356, -3.0087, 6.93433, -2.26369, 5.55893, -2.03445, 0.0573092, -5.75951, -0.171926, -6.90568, -1.03155, -6.84837, -5.73085, -5.93143, -6.7051)
 2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 2.63619, 3.98294, 4.12621, -3.52447, 4.0116, -8, 2.98004, -8, -8)
 3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 2.63619, 3.98294, 4.12621, -3.52447, 4.0116, -8, 2.98004, -8, -8)
 4:7/0 = 0
 5:7/0 = 0
 6:7/0 = 0
@@ -186,14 +201,15 @@ texture = ExtResource("4_dwbse")
 1:15/0 = 0
 1:15/0/custom_data_1 = true
 2:15/0 = 0
-2:15/0/custom_data_2 = true
 2:15/0/custom_data_3 = true
 3:15/0 = 0
-3:15/0/custom_data_1 = true
 4:15/0 = 0
 4:15/0/custom_data_1 = true
+4:15/0/custom_data_2 = true
 5:15/0 = 0
+5:15/0/custom_data_3 = true
 6:15/0 = 0
+6:15/0/custom_data_1 = true
 8:15/0 = 0
 9:15/0 = 0
 10:15/0 = 0
@@ -210,6 +226,18 @@ texture = ExtResource("4_dwbse")
 15:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-1.97714, -8, -1.86253, 3.89698, -0.143271, 4.87122, 1.86253, 5.90278, 2.83677, 6.99164, 3.23793, 8, -8, 8, -8, -8)
 3:9/0 = 0
 0:14/0 = 0
+0:14/0/custom_data_3 = true
+1:14/0 = 0
+2:14/0 = 0
+2:14/0/custom_data_1 = true
+2:14/0/custom_data_2 = true
+3:14/0 = 0
+3:14/0/custom_data_3 = true
+4:14/0 = 0
+5:14/0 = 0
+5:14/0/custom_data_1 = true
+5:14/0/custom_data_2 = true
+4:12/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_dwbse"]
 physics_layer_0/collision_layer = 2
@@ -241,6 +269,8 @@ size = Vector2(203, 2974)
 [node name="World" type="Node2D"]
 script = ExtResource("1_fj7yv")
 carrot_item = ExtResource("2_dwbse")
+lemon_item = ExtResource("3_ioo17")
+hot_dog_item = ExtResource("4_wse8f")
 
 [node name="ShopKeeper" parent="." instance=ExtResource("2_036b0")]
 position = Vector2(-108, -185)
@@ -285,3 +315,9 @@ shape = SubResource("RectangleShape2D_wse8f")
 
 [node name="Node2D" parent="." instance=ExtResource("7_pkg7o")]
 position = Vector2(333, -166)
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wse8f")
+volume_db = -17.802
+
+[connection signal="finished" from="Background" to="." method="_on_background_finished"]

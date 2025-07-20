@@ -6,7 +6,7 @@ extends character
 @onready var Player_toolbar = preload("res://Inventory/Toolbar/PlayerToolBar.tres")
 @onready var store_ui = $ShopKeeperStore
 var is_interactable: bool = false
-var money: int = 100
+var money: int = 9999
 
 var player_inv = []
 var player_toolbar = [
@@ -103,6 +103,9 @@ func set_current_item() -> void:
 
 func collect(item: InvItem):
 	inv.insert(item)
+	if $Collect.playing:
+		await $Collect.finished
+	$Collect.play()
 
 func interact():
 	if is_interactable and Input.is_action_just_pressed("Interact") and !store_ui.visible:
@@ -118,6 +121,9 @@ func buy(price: int, item: InvItem):
 
 func sell(amt: int, item: InvItem):
 	money += amt
+	if toolbar.slots[2].amount == 1:
+		toolbar.slots[2].item = null
+	toolbar.slots[2].amount -= 1
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	is_interactable = true

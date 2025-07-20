@@ -3,6 +3,8 @@ extends Node2D
 @onready var tile_map: TileMap = $TileMap
 @onready var player = $Player
 @export var carrot_item: InvItem
+@export var lemon_item: InvItem
+@export var hot_dog_item: InvItem
 
 var soil_layer = 0
 var seed_layer = 1
@@ -12,9 +14,14 @@ var wet_tilled_soil: Vector2i = Vector2i(0, 9)
 var tile_mouse_pos
 var can_place_seed_custom_data = "can_place_seeds"
 var can_collect_item = "can_collect"
+var can_replenish = "replenishable"
+@warning_ignore("shadowed_global_identifier")
 var seed = "seed"
 var tile_map_position: Vector2i
 var amount_time: float
+
+func _ready() -> void:
+	$Background.play()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Use"):
@@ -40,6 +47,14 @@ func _input(_event: InputEvent) -> void:
 							final_seed_level = 1
 							atlas_coord = Vector2i(0, 15)
 							amount_time = 10.0
+						elif player.current_item["name"] == "Lemon":
+							final_seed_level = 2
+							atlas_coord = Vector2i(3, 14)
+							amount_time = 30.0
+						elif player.current_item["name"] == "Hot Dog":
+							final_seed_level = 1
+							atlas_coord = Vector2i(5, 15)
+							amount_time = 300.0
 						else:
 							final_seed_level = null
 							atlas_coord = null
@@ -55,7 +70,13 @@ func _input(_event: InputEvent) -> void:
 func harvest_plant(tile_pos: Vector2i, source_id, tile_id) -> void:
 	if tile_id == Vector2i(1, 15):
 		player.collect(carrot_item)
-		tile_map.set_cell(seed_layer, tile_map_position, 0, Vector2i(0, 14))
+		tile_map.set_cell(seed_layer, tile_map_position, source_id, Vector2i(4, 12))
+	elif tile_id == Vector2i(5, 14):
+		player.collect(lemon_item)
+		handle_seed(tile_pos, 1, Vector2i(4, 14), 2, 30.0)
+	elif tile_id == Vector2i(6, 15):
+		player.collect(hot_dog_item)
+		tile_map.set_cell(seed_layer, tile_map_position, source_id, Vector2i(4, 12))
 
 func handle_seed(tile_map_pos, level, atlas_coord, final_seed_level, amt_time, already_set = false):
 	var seed_data: TileData = tile_map.get_cell_tile_data(seed_layer, tile_map_position)
@@ -71,9 +92,13 @@ func handle_seed(tile_map_pos, level, atlas_coord, final_seed_level, amt_time, a
 			player.toolbar.slots[2].amount -= 1
 		
 		if level != final_seed_level:
-			await get_tree().create_timer(amt_time).timeout
+			await get_tree().create_timer(1.0).timeout
 			var new_atlas: Vector2i = Vector2i(atlas_coord.x + 1, atlas_coord.y)
 			tile_map.set_cell(seed_layer, tile_map_pos, source_id, new_atlas)
 			handle_seed(tile_map_pos, level + 1, new_atlas, final_seed_level, amt_time, true)
 		else:
 			return
+
+
+func _on_background_finished() -> void:
+	$Background.play()

@@ -1,17 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch0y31xrs6im8"]
+[gd_scene load_steps=5 format=3 uid="uid://ch0y31xrs6im8"]
 
 [ext_resource type="Script" uid="uid://brvmj7w5q6yul" path="res://sell_well.gd" id="1_1w03e"]
+[ext_resource type="Resource" uid="uid://c7jnivdgimviw" path="res://Inventory/Inventory Items/Carrot.tres" id="2_bb7ug"]
+[ext_resource type="AudioStream" uid="uid://brfqfscby20n8" path="res://SFX/Sell sfx.wav" id="3_cchyf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0qtw"]
-radius = 55.0091
+radius = 85.0235
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1w03e")
+carrot_item = ExtResource("2_bb7ug")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_w0qtw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cchyf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

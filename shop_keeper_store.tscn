@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://btvujvwv0kr7p"]
+[gd_scene load_steps=12 format=3 uid="uid://btvujvwv0kr7p"]
 
 [ext_resource type="Texture2D" uid="uid://ch3nxdbs1kb7r" path="res://Textures/Inv_UI.png" id="1_inqpc"]
 [ext_resource type="Script" uid="uid://dedajnep3fc23" path="res://shop_keeper_store.gd" id="1_lvusb"]
 [ext_resource type="Resource" uid="uid://ejx61nxfkph7" path="res://Inventory/Inventory Items/CarrotSeeds.tres" id="2_48e5w"]
 [ext_resource type="PackedScene" uid="uid://biwk25yenncom" path="res://inv_ui_slot.tscn" id="2_m66c4"]
+[ext_resource type="Resource" uid="uid://b2vkm6wrhx5j8" path="res://Inventory/Inventory Items/Lemon Seeds.tres" id="3_gvtd8"]
 [ext_resource type="PackedScene" uid="uid://d4jf671enivrp" path="res://prices.tscn" id="3_pyh2f"]
+[ext_resource type="Resource" uid="uid://cw5i8o41n27tl" path="res://Inventory/Inventory Items/Hot Dog Seeds.tres" id="4_5kt7t"]
 [ext_resource type="Texture2D" uid="uid://cgcalmd7cciqt" path="res://Textures/Carrot.png" id="5_p32bw"]
+[ext_resource type="Texture2D" uid="uid://cpp5jmmlp32l" path="res://Textures/Game Developments/Hot Dog.png" id="7_7e6qh"]
+[ext_resource type="Texture2D" uid="uid://bendhg8w6wayd" path="res://Textures/Game Developments/Lemon.png" id="8_p3s7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48e5w"]
 size = Vector2(242, 119)
@@ -21,6 +25,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lvusb")
 item1 = ExtResource("2_48e5w")
+item2 = ExtResource("3_gvtd8")
+item3 = ExtResource("4_5kt7t")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -76,12 +82,30 @@ offset_right = 31.0
 offset_bottom = 39.0
 text = "10"
 
-[node name="Button" type="Button" parent="Sprite2D/Label"]
+[node name="Carrot_button" type="Button" parent="Sprite2D/Label"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -6.0
 offset_top = -30.0
 offset_right = 24.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(155, 24)
+texture = ExtResource("7_7e6qh")
+
+[node name="Label" type="Label" parent="Sprite2D2"]
+offset_left = -24.0
+offset_top = 14.0
+offset_right = 16.0
+offset_bottom = 37.0
+text = "1000"
+
+[node name="Lemon_button" type="Button" parent="Sprite2D2/Label"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -30.0
+offset_right = -18.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -91,6 +115,29 @@ collision_mask = 4
 position = Vector2(111, 49.5)
 shape = SubResource("RectangleShape2D_48e5w")
 
-[connection signal="pressed" from="Sprite2D/Label/Button" to="." method="_on_button_pressed"]
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(98, 24)
+texture = ExtResource("8_p3s7u")
+
+[node name="Label" type="Label" parent="Sprite2D3"]
+offset_left = -8.0
+offset_top = 14.0
+offset_right = 32.0
+offset_bottom = 37.0
+text = "25"
+
+[node name="Hot_Dog_button" type="Button" parent="Sprite2D3/Label"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 49.0
+offset_top = -30.0
+offset_right = 80.0
+offset_bottom = 1.0
+
+[connection signal="pressed" from="Sprite2D/Label/Carrot_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Sprite2D/Label/Carrot_button" to="." method="_on_carrot_button_pressed"]
+[connection signal="pressed" from="Sprite2D2/Label/Lemon_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Sprite2D2/Label/Lemon_button" to="." method="_on_lemon_button_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="Sprite2D3/Label/Hot_Dog_button" to="." method="_on_hot_dog_button_pressed"]
