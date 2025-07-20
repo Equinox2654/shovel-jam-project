@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_rnprd")
-name = " Hoe"
+name = "Hoe"
 texture = ExtResource("2_4cspv")
-type = " Default"
+type = "Default"
 metadata/_custom_type_script = "uid://c0asixjkpqsfi"

@@ -12,11 +12,11 @@ var player_inv = []
 var player_toolbar = [
 	{
 		"name": "Hoe",
-		"type": "default"
+		"type": "Default"
 	},
 	{
 		"name": "Watering Can",
-		"type": "default"
+		"type": "Default"
 	},
 	{
 		"name": "Empty",
@@ -47,17 +47,45 @@ func move(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	update($PlayerSprite)
+	set_toolbar()
 	set_current_item()
 	interact()
 	$Prices/Label.text = str(money)
-	if toolbar.slots[2].item != null:
-		player_toolbar[2] = {
-			"name": toolbar.slots[2].item.name,
-			"type": toolbar.slots[2].item.type
-		}
 
 func _physics_process(delta: float) -> void:
 	physics_update(delta)
+
+func set_toolbar() -> void:
+	if toolbar.slots[2].item:
+		player_toolbar = [
+			{
+				"name": toolbar.slots[0].item.name,
+				"type": toolbar.slots[0].item.type
+			},
+			{
+				"name": toolbar.slots[1].item.name,
+				"type": toolbar.slots[1].item.type
+			},
+			{
+				"name": toolbar.slots[2].item.name,
+				"type": toolbar.slots[2].item.type
+			}
+		]
+	else:
+		player_toolbar = [
+			{
+				"name": "Hoe",
+				"type": "Default"
+			},
+			{
+				"name": "Watering Can",
+				"type": "Default"
+			},
+			{
+				"name": "Empty",
+				"type": "Empty"
+			}
+		]
 
 func set_current_item() -> void:
 	if Input.is_action_just_pressed("1") and current_item != player_toolbar[0]:
@@ -88,9 +116,11 @@ func buy(price: int, item: InvItem):
 		money -= price
 		collect(item)
 
+func sell(amt: int, item: InvItem):
+	money += amt
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	is_interactable = true
-
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	is_interactable = false

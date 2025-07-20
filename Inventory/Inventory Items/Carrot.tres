@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_l6epa")
-name = " Carrot"
+name = "Carrot"
 texture = ExtResource("2_lvjl7")
-type = " Sellable"
+type = "Sellable"
 metadata/_custom_type_script = "uid://c0asixjkpqsfi"

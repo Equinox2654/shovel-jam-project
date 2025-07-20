@@ -22,6 +22,7 @@ func update(slot: InvSlot):
 			current_item = slot.item
 			current_amount = slot.amount
 			item_visual.visible = true
+			label.visible = false
 			item_visual.texture = slot.item.texture
 			if slot.amount > 1:
 				label.visible = true
